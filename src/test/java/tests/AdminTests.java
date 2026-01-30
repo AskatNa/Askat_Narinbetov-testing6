@@ -1,14 +1,25 @@
+package tests;
+
 import base.BaseTest;
 import listeners.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.AdminPage;
+import pages.DashboardPage;
+import pages.LoginPage;
+import utils.ExtentTestManager;
+import utils.ScreenshotUtil;
 
 @Listeners(TestListener.class)
 public class AdminTests extends BaseTest {
 
     @Test
-    public void TCADMIN_001_searchUserAdmin() {
+    @Parameters({"browser", "platform"})
+    public void TCADMIN_001_searchUserAdmin(String browser, String platform) {
+        String testName = "Admin Test - " + browser + " on " + platform;
+        System.out.println("Running test: " + testName);
         LoginPage login = new LoginPage(driver);
         login.open();
         ExtentTestManager.getTest().info("Step 1: Open login page");

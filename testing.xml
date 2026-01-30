@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="BrowserStack Suite" parallel="tests" thread-count="1">
+    <test name="Chrome Tests">
+        <parameter name="browser" value="Chrome" />
+        <parameter name="platform" value="Windows 11" />
+        <parameter name="version" value="latest" />
+        <parameter name="testName" value="Chrome Login Test" />
+        <classes>
+            <class name="tests.AdminTests" />
+            <class name="tests.LoginTests" />
+        </classes>
+    </test>
+    <test name="Edge Tests">
+        <parameter name="browser" value="Edge" />
+        <parameter name="platform" value="Windows 11" />
+        <parameter name="version" value="latest" />
+    <parameter name="testName" value="Edge Login Test" />
+        <classes>
+            <class name="tests.AdminTests" />
+            <class name="tests.LoginTests" />
+        </classes>
+    </test>
+</suite>

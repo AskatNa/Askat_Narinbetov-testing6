@@ -1,15 +1,25 @@
+package tests;
+
 import base.BaseTest;
 import listeners.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import pages.DashboardPage;
+import pages.LoginPage;
+import utils.ExtentTestManager;
+import utils.ScreenshotUtil;
 
 
 @Listeners(TestListener.class)
 public class LoginTests extends BaseTest {
 
     @Test
-    public void TCLOGIN_001_validLogin() {
+    @Parameters({"browser", "platform"})
+    public void TCLOGIN_001_validLogin(String browser, String platform) {
+        String testName = "Login Test - " + browser + " on " + platform;
+        System.out.println("Running test: " + testName);
         LoginPage login = new LoginPage(driver);
         login.open();
         ExtentTestManager.getTest().info("Step 1: Open OrangeHRM login page");
@@ -29,7 +39,10 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void TCLOGIN_002_invalidLogin() {
+    @Parameters({"browser", "platform"})
+    public void TCLOGIN_002_invalidLogin(String browser, String platform) {
+        String testName = "Login Test - " + browser + " on " + platform;
+        System.out.println("Running test: " + testName);
         try {
             LoginPage login = new LoginPage(driver);
             login.open();
@@ -52,7 +65,10 @@ public class LoginTests extends BaseTest {
         }}
 
     @Test
-    public void TCLOGOUT_001_validLogout() {
+    @Parameters({"browser", "platform"})
+    public void TCLOGOUT_001_validLogout(String browser, String platform) {
+        String testName = "Login Test - " + browser + " on " + platform;
+        System.out.println("Running test: " + testName);
         LoginPage login = new LoginPage(driver);
         login.open();
         login.login("Admin", "admin123");

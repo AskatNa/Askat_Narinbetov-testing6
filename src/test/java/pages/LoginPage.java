@@ -1,3 +1,5 @@
+package pages;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -37,16 +39,23 @@ public class LoginPage {
         log.info("Click login");
         driver.findElement(loginBtn).click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public boolean isDisplayed() {
         log.info("Check if Login page is displayed");
         return wait.until(ExpectedConditions.visibilityOfElementLocated(username)).isDisplayed();
+    }
+    public String getErrorTextOrNull() {
+        try {
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMsg)).getText();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 }
